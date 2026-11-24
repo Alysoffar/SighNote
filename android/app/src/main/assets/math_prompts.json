@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "prompt_001",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{1}{2}",
+    "description": "Fractions sample #1"
+  },
+  {
+    "id": "prompt_002",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{3}{4}",
+    "description": "Fractions sample #2"
+  },
+  {
+    "id": "prompt_003",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{a}{b}",
+    "description": "Fractions sample #3"
+  },
+  {
+    "id": "prompt_004",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{x+1}{x-1}",
+    "description": "Fractions sample #4"
+  },
+  {
+    "id": "prompt_005",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{2x+3}{5}",
+    "description": "Fractions sample #5"
+  },
+  {
+    "id": "prompt_006",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
+    "description": "Fractions sample #6"
+  },
+  {
+    "id": "prompt_007",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{\\sin(x)}{\\cos(x)}",
+    "description": "Fractions sample #7"
+  },
+  {
+    "id": "prompt_008",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{d}{dx}(x^2)",
+    "description": "Fractions sample #8"
+  },
+  {
+    "id": "prompt_009",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "1 + \\frac{1}{x}",
+    "description": "Fractions sample #9"
+  },
+  {
+    "id": "prompt_010",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{x^2 - 9}{x + 3}",
+    "description": "Fractions sample #10"
+  },
+  {
+    "id": "prompt_011",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{a+b}{c+d}",
+    "description": "Fractions sample #11"
+  },
+  {
+    "id": "prompt_012",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{1}{1 + \\frac{1}{x}}",
+    "description": "Fractions sample #12"
+  },
+  {
+    "id": "prompt_013",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{e^x - e^{-x}}{2}",
+    "description": "Fractions sample #13"
+  },
+  {
+    "id": "prompt_014",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{4}{3}\\pi r^3",
+    "description": "Fractions sample #14"
+  },
+  {
+    "id": "prompt_015",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{df}{dt} = \\frac{\\partial f}{\\partial t}",
+    "description": "Fractions sample #15"
+  },
+  {
+    "id": "prompt_016",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{n!}{k!(n-k)!}",
+    "description": "Fractions sample #16"
+  },
+  {
+    "id": "prompt_017",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{V_1}{T_1} = \\frac{V_2}{T_2}",
+    "description": "Fractions sample #17"
+  },
+  {
+    "id": "prompt_018",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{\\Delta y}{\\Delta x}",
+    "description": "Fractions sample #18"
+  },
+  {
+    "id": "prompt_019",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{1}{2}mv^2",
+    "description": "Fractions sample #19"
+  },
+  {
+    "id": "prompt_020",
+    "category": "FRACTIONS",
+    "groundTruthLatex": "\\frac{hc}{\\lambda}",
+    "description": "Fractions sample #20"
+  },
+  {
+    "id": "prompt_021",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "x^2",
+    "description": "Exponents sample #1"
+  },
+  {
+    "id": "prompt_022",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "y^3",
+    "description": "Exponents sample #2"
+  },
+  {
+    "id": "prompt_023",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "e^x",
+    "description": "Exponents sample #3"
+  },
+  {
+    "id": "prompt_024",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "2^n",
+    "description": "Exponents sample #4"
+  },
+  {
+    "id": "prompt_025",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "x^{a+b}",
+    "description": "Exponents sample #5"
+  },
+  {
+    "id": "prompt_026",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "e^{-x^2}",
+    "description": "Exponents sample #6"
+  },
+  {
+    "id": "prompt_027",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "a^2 + b^2 = c^2",
+    "description": "Exponents sample #7"
+  },
+  {
+    "id": "prompt_028",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "(x+y)^2 = x^2 + 2xy + y^2",
+    "description": "Exponents sample #8"
+  },
+  {
+    "id": "prompt_029",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "10^6",
+    "description": "Exponents sample #9"
+  },
+  {
+    "id": "prompt_030",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "2^{2^n}",
+    "description": "Exponents sample #10"
+  },
+  {
+    "id": "prompt_031",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "x^{1/2}",
+    "description": "Exponents sample #11"
+  },
+  {
+    "id": "prompt_032",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "e^{i\\pi} + 1 = 0",
+    "description": "Exponents sample #12"
+  },
+  {
+    "id": "prompt_033",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "3^{2x - 1}",
+    "description": "Exponents sample #13"
+  },
+  {
+    "id": "prompt_034",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "y = x^4 - 2x^2 + 1",
+    "description": "Exponents sample #14"
+  },
+  {
+    "id": "prompt_035",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "(a^m)^n = a^{mn}",
+    "description": "Exponents sample #15"
+  },
+  {
+    "id": "prompt_036",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "2^{-1} = 0.5",
+    "description": "Exponents sample #16"
+  },
+  {
+    "id": "prompt_037",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "x^{n-1}",
+    "description": "Exponents sample #17"
+  },
+  {
+    "id": "prompt_038",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "A = P(1 + r)^t",
+    "description": "Exponents sample #18"
+  },
+  {
+    "id": "prompt_039",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "f(x) = 2^x",
+    "description": "Exponents sample #19"
+  },
+  {
+    "id": "prompt_040",
+    "category": "EXPONENTS",
+    "groundTruthLatex": "e^{\\ln(x)} = x",
+    "description": "Exponents sample #20"
+  },
+  {
+    "id": "prompt_041",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{2}",
+    "description": "Roots & Radicals sample #1"
+  },
+  {
+    "id": "prompt_042",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{x}",
+    "description": "Roots & Radicals sample #2"
+  },
+  {
+    "id": "prompt_043",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{x+1}",
+    "description": "Roots & Radicals sample #3"
+  },
+  {
+    "id": "prompt_044",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{a^2 + b^2}",
+    "description": "Roots & Radicals sample #4"
+  },
+  {
+    "id": "prompt_045",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{b^2 - 4ac}",
+    "description": "Roots & Radicals sample #5"
+  },
+  {
+    "id": "prompt_046",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt[3]{8} = 2",
+    "description": "Roots & Radicals sample #6"
+  },
+  {
+    "id": "prompt_047",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt[n]{x}",
+    "description": "Roots & Radicals sample #7"
+  },
+  {
+    "id": "prompt_048",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{1 - x^2}",
+    "description": "Roots & Radicals sample #8"
+  },
+  {
+    "id": "prompt_049",
+    "category": "ROOTS",
+    "groundTruthLatex": "2\\sqrt{3}",
+    "description": "Roots & Radicals sample #9"
+  },
+  {
+    "id": "prompt_050",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{\\frac{1}{2}}",
+    "description": "Roots & Radicals sample #10"
+  },
+  {
+    "id": "prompt_051",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt[4]{16}",
+    "description": "Roots & Radicals sample #11"
+  },
+  {
+    "id": "prompt_052",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{x} + \\sqrt{y}",
+    "description": "Roots & Radicals sample #12"
+  },
+  {
+    "id": "prompt_053",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{2x + 5} = 7",
+    "description": "Roots & Radicals sample #13"
+  },
+  {
+    "id": "prompt_054",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{\\pi}",
+    "description": "Roots & Radicals sample #14"
+  },
+  {
+    "id": "prompt_055",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\frac{1}{\\sqrt{2}}",
+    "description": "Roots & Radicals sample #15"
+  },
+  {
+    "id": "prompt_056",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{s(s-a)(s-b)(s-c)}",
+    "description": "Roots & Radicals sample #16"
+  },
+  {
+    "id": "prompt_057",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt[3]{x^3 + y^3}",
+    "description": "Roots & Radicals sample #17"
+  },
+  {
+    "id": "prompt_058",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{r^2 - x^2}",
+    "description": "Roots & Radicals sample #18"
+  },
+  {
+    "id": "prompt_059",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{\\ln(x)}",
+    "description": "Roots & Radicals sample #19"
+  },
+  {
+    "id": "prompt_060",
+    "category": "ROOTS",
+    "groundTruthLatex": "\\sqrt{1 + (\\frac{dy}{dx})^2}",
+    "description": "Roots & Radicals sample #20"
+  },
+  {
+    "id": "prompt_061",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "x_1",
+    "description": "Subscripts sample #1"
+  },
+  {
+    "id": "prompt_062",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "x_n",
+    "description": "Subscripts sample #2"
+  },
+  {
+    "id": "prompt_063",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "a_0 + a_1 x",
+    "description": "Subscripts sample #3"
+  },
+  {
+    "id": "prompt_064",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "v_0 t",
+    "description": "Subscripts sample #4"
+  },
+  {
+    "id": "prompt_065",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "x_i + y_i",
+    "description": "Subscripts sample #5"
+  },
+  {
+    "id": "prompt_066",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "F_{net} = ma",
+    "description": "Subscripts sample #6"
+  },
+  {
+    "id": "prompt_067",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "T_1 = T_2",
+    "description": "Subscripts sample #7"
+  },
+  {
+    "id": "prompt_068",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "C_{max}",
+    "description": "Subscripts sample #8"
+  },
+  {
+    "id": "prompt_069",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "P_{initial}",
+    "description": "Subscripts sample #9"
+  },
+  {
+    "id": "prompt_070",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "x_{n+1} = x_n - \\frac{f(x_n)}{f\\x27(x_n)}",
+    "description": "Subscripts sample #10"
+  },
+  {
+    "id": "prompt_071",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "k_B T",
+    "description": "Subscripts sample #11"
+  },
+  {
+    "id": "prompt_072",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "\\mu_0 \\epsilon_0",
+    "description": "Subscripts sample #12"
+  },
+  {
+    "id": "prompt_073",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "a_{ij}",
+    "description": "Subscripts sample #13"
+  },
+  {
+    "id": "prompt_074",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "E_k = \\frac{1}{2}mv^2",
+    "description": "Subscripts sample #14"
+  },
+  {
+    "id": "prompt_075",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "R_{eq} = R_1 + R_2",
+    "description": "Subscripts sample #15"
+  },
+  {
+    "id": "prompt_076",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "\\lambda_{max}",
+    "description": "Subscripts sample #16"
+  },
+  {
+    "id": "prompt_077",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "H_2O",
+    "description": "Subscripts sample #17"
+  },
+  {
+    "id": "prompt_078",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "S_n = \\frac{n(a_1 + a_n)}{2}",
+    "description": "Subscripts sample #18"
+  },
+  {
+    "id": "prompt_079",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "y_k = \\alpha x_k",
+    "description": "Subscripts sample #19"
+  },
+  {
+    "id": "prompt_080",
+    "category": "SUBSCRIPTS",
+    "groundTruthLatex": "\\sigma_{x}^2",
+    "description": "Subscripts sample #20"
+  },
+  {
+    "id": "prompt_081",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\alpha + \\beta = \\gamma",
+    "description": "Greek Letters sample #1"
+  },
+  {
+    "id": "prompt_082",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\theta = \\frac{\\pi}{4}",
+    "description": "Greek Letters sample #2"
+  },
+  {
+    "id": "prompt_083",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\lambda = 500\\text{nm}",
+    "description": "Greek Letters sample #3"
+  },
+  {
+    "id": "prompt_084",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\mu \\pm \\sigma",
+    "description": "Greek Letters sample #4"
+  },
+  {
+    "id": "prompt_085",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\Delta x \\to 0",
+    "description": "Greek Letters sample #5"
+  },
+  {
+    "id": "prompt_086",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\omega = 2\\pi f",
+    "description": "Greek Letters sample #6"
+  },
+  {
+    "id": "prompt_087",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\phi = \\frac{1 + \\sqrt{5}}{2}",
+    "description": "Greek Letters sample #7"
+  },
+  {
+    "id": "prompt_088",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\rho = \\frac{m}{V}",
+    "description": "Greek Letters sample #8"
+  },
+  {
+    "id": "prompt_089",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\tau = r \\times F",
+    "description": "Greek Letters sample #9"
+  },
+  {
+    "id": "prompt_090",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\epsilon > 0",
+    "description": "Greek Letters sample #10"
+  },
+  {
+    "id": "prompt_091",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\delta < \\epsilon",
+    "description": "Greek Letters sample #11"
+  },
+  {
+    "id": "prompt_092",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\psi(x,t)",
+    "description": "Greek Letters sample #12"
+  },
+  {
+    "id": "prompt_093",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\Omega = 50\\Omega",
+    "description": "Greek Letters sample #13"
+  },
+  {
+    "id": "prompt_094",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\Sigma = \\text{diag}(\\sigma_i)",
+    "description": "Greek Letters sample #14"
+  },
+  {
+    "id": "prompt_095",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\Phi = B \\cdot A",
+    "description": "Greek Letters sample #15"
+  },
+  {
+    "id": "prompt_096",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\zeta(s)",
+    "description": "Greek Letters sample #16"
+  },
+  {
+    "id": "prompt_097",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\chi^2",
+    "description": "Greek Letters sample #17"
+  },
+  {
+    "id": "prompt_098",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\Gamma(n) = (n-1)!",
+    "description": "Greek Letters sample #18"
+  },
+  {
+    "id": "prompt_099",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\nabla \\cdot E = \\frac{\\rho}{\\epsilon_0}",
+    "description": "Greek Letters sample #19"
+  },
+  {
+    "id": "prompt_100",
+    "category": "GREEK_LETTERS",
+    "groundTruthLatex": "\\kappa = \\frac{1}{R}",
+    "description": "Greek Letters sample #20"
+  },
+  {
+    "id": "prompt_101",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int x \\, dx",
+    "description": "Integrals sample #1"
+  },
+  {
+    "id": "prompt_102",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_0^1 x^2 \\, dx",
+    "description": "Integrals sample #2"
+  },
+  {
+    "id": "prompt_103",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int e^x \\, dx = e^x + C",
+    "description": "Integrals sample #3"
+  },
+  {
+    "id": "prompt_104",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int \\frac{1}{x} \\, dx = \\ln|x| + C",
+    "description": "Integrals sample #4"
+  },
+  {
+    "id": "prompt_105",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_0^\\pi \\sin(x) \\, dx",
+    "description": "Integrals sample #5"
+  },
+  {
+    "id": "prompt_106",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_{-\\infty}^{\\infty} e^{-x^2} \\, dx = \\sqrt{\\pi}",
+    "description": "Integrals sample #6"
+  },
+  {
+    "id": "prompt_107",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_a^b f(x) \\, dx",
+    "description": "Integrals sample #7"
+  },
+  {
+    "id": "prompt_108",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\iint_R dx \\, dy",
+    "description": "Integrals sample #8"
+  },
+  {
+    "id": "prompt_109",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\oint_C F \\cdot dr",
+    "description": "Integrals sample #9"
+  },
+  {
+    "id": "prompt_110",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int u \\, dv = uv - \\int v \\, du",
+    "description": "Integrals sample #10"
+  },
+  {
+    "id": "prompt_111",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_0^{\\infty} \\frac{1}{1+x^2} \\, dx = \\frac{\\pi}{2}",
+    "description": "Integrals sample #11"
+  },
+  {
+    "id": "prompt_112",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int \\cos(2x) \\, dx",
+    "description": "Integrals sample #12"
+  },
+  {
+    "id": "prompt_113",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_1^e \\frac{1}{t} \\, dt = 1",
+    "description": "Integrals sample #13"
+  },
+  {
+    "id": "prompt_114",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int x e^x \\, dx",
+    "description": "Integrals sample #14"
+  },
+  {
+    "id": "prompt_115",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int \\tan(x) \\, dx",
+    "description": "Integrals sample #15"
+  },
+  {
+    "id": "prompt_116",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\iiint_V dV",
+    "description": "Integrals sample #16"
+  },
+  {
+    "id": "prompt_117",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_0^T f(t) dt",
+    "description": "Integrals sample #17"
+  },
+  {
+    "id": "prompt_118",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int \\sqrt{1-x^2} \\, dx",
+    "description": "Integrals sample #18"
+  },
+  {
+    "id": "prompt_119",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int \\frac{dx}{x^2 + a^2}",
+    "description": "Integrals sample #19"
+  },
+  {
+    "id": "prompt_120",
+    "category": "INTEGRALS",
+    "groundTruthLatex": "\\int_0^1 x(1-x)^n \\, dx",
+    "description": "Integrals sample #20"
+  },
+  {
+    "id": "prompt_121",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{i=1}^n i = \\frac{n(n+1)}{2}",
+    "description": "Summations & Limits sample #1"
+  },
+  {
+    "id": "prompt_122",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{k=0}^{\\infty} x^k = \\frac{1}{1-x}",
+    "description": "Summations & Limits sample #2"
+  },
+  {
+    "id": "prompt_123",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{n=1}^{\\infty} \\frac{1}{n^2} = \\frac{\\pi^2}{6}",
+    "description": "Summations & Limits sample #3"
+  },
+  {
+    "id": "prompt_124",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{x \\to 0} \\frac{\\sin(x)}{x} = 1",
+    "description": "Summations & Limits sample #4"
+  },
+  {
+    "id": "prompt_125",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{n \\to \\infty} (1 + \\frac{1}{n})^n = e",
+    "description": "Summations & Limits sample #5"
+  },
+  {
+    "id": "prompt_126",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{i=1}^n i^2 = \\frac{n(n+1)(2n+1)}{6}",
+    "description": "Summations & Limits sample #6"
+  },
+  {
+    "id": "prompt_127",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\prod_{k=1}^n k = n!",
+    "description": "Summations & Limits sample #7"
+  },
+  {
+    "id": "prompt_128",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{x \\to \\infty} \\frac{1}{x} = 0",
+    "description": "Summations & Limits sample #8"
+  },
+  {
+    "id": "prompt_129",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{k=0}^n \\binom{n}{k} = 2^n",
+    "description": "Summations & Limits sample #9"
+  },
+  {
+    "id": "prompt_130",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{x \\to 1} \\frac{x^2 - 1}{x - 1} = 2",
+    "description": "Summations & Limits sample #10"
+  },
+  {
+    "id": "prompt_131",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{n=1}^{\\infty} (-1)^{n+1} \\frac{1}{n} = \\ln(2)",
+    "description": "Summations & Limits sample #11"
+  },
+  {
+    "id": "prompt_132",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}",
+    "description": "Summations & Limits sample #12"
+  },
+  {
+    "id": "prompt_133",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{j=1}^m w_j x_j",
+    "description": "Summations & Limits sample #13"
+  },
+  {
+    "id": "prompt_134",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{x \\to 0^+} x \\ln(x) = 0",
+    "description": "Summations & Limits sample #14"
+  },
+  {
+    "id": "prompt_135",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{i=1}^N (x_i - \\bar{x})^2",
+    "description": "Summations & Limits sample #15"
+  },
+  {
+    "id": "prompt_136",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{x \\to \\infty} \\frac{3x^2 + 2}{5x^2 - 1} = \\frac{3}{5}",
+    "description": "Summations & Limits sample #16"
+  },
+  {
+    "id": "prompt_137",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\prod_{i=1}^{\\infty} p_i",
+    "description": "Summations & Limits sample #17"
+  },
+  {
+    "id": "prompt_138",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{k=1}^n k^3 = (\\frac{n(n+1)}{2})^2",
+    "description": "Summations & Limits sample #18"
+  },
+  {
+    "id": "prompt_139",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\lim_{t \\to 0} \\frac{e^t - 1}{t} = 1",
+    "description": "Summations & Limits sample #19"
+  },
+  {
+    "id": "prompt_140",
+    "category": "SUMMATIONS",
+    "groundTruthLatex": "\\sum_{m=0}^{\\infty} \\frac{\\lambda^m e^{-\\lambda}}{m!}",
+    "description": "Summations & Limits sample #20"
+  },
+  {
+    "id": "prompt_141",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 2x + y = 5 \\\\ x - y = 1 \\end{cases}",
+    "description": "Systems of Equations sample #1"
+  },
+  {
+    "id": "prompt_142",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x + y + z = 6 \\\\ 2y + 5z = -4 \\\\ 2x + 5y - z = 27 \\end{cases}",
+    "description": "Systems of Equations sample #2"
+  },
+  {
+    "id": "prompt_143",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 3x - 2y = 8 \\\\ 4x + 3y = -1 \\end{cases}",
+    "description": "Systems of Equations sample #3"
+  },
+  {
+    "id": "prompt_144",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x + 2y = 7 \\\\ 3x - y = 0 \\end{cases}",
+    "description": "Systems of Equations sample #4"
+  },
+  {
+    "id": "prompt_145",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} y = x^2 \\\\ y = 2x + 3 \\end{cases}",
+    "description": "Systems of Equations sample #5"
+  },
+  {
+    "id": "prompt_146",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} ax + by = e \\\\ cx + dy = f \\end{cases}",
+    "description": "Systems of Equations sample #6"
+  },
+  {
+    "id": "prompt_147",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x^2 + y^2 = 25 \\\\ x - y = 1 \\end{cases}",
+    "description": "Systems of Equations sample #7"
+  },
+  {
+    "id": "prompt_148",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} u + v = 10 \\\\ u - v = 2 \\end{cases}",
+    "description": "Systems of Equations sample #8"
+  },
+  {
+    "id": "prompt_149",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 2x_1 + 3x_2 = 12 \\\\ 5x_1 - x_2 = 13 \\end{cases}",
+    "description": "Systems of Equations sample #9"
+  },
+  {
+    "id": "prompt_150",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} I_1 + I_2 = I_3 \\\\ V_1 - I_1 R_1 = 0 \\end{cases}",
+    "description": "Systems of Equations sample #10"
+  },
+  {
+    "id": "prompt_151",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x + y = 4 \\\\ xy = 3 \\end{cases}",
+    "description": "Systems of Equations sample #11"
+  },
+  {
+    "id": "prompt_152",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 2a + 3b = 7 \\\\ a - b = 1 \\end{cases}",
+    "description": "Systems of Equations sample #12"
+  },
+  {
+    "id": "prompt_153",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 4x + y = 9 \\\\ 2x + 3y = 7 \\end{cases}",
+    "description": "Systems of Equations sample #13"
+  },
+  {
+    "id": "prompt_154",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x/2 + y/3 = 4 \\\\ x/4 - y/2 = -1 \\end{cases}",
+    "description": "Systems of Equations sample #14"
+  },
+  {
+    "id": "prompt_155",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} y = 3x - 1 \\\\ 2x + y = 9 \\end{cases}",
+    "description": "Systems of Equations sample #15"
+  },
+  {
+    "id": "prompt_156",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 5x + 2y = 16 \\\\ 3x - 4y = 7 \\end{cases}",
+    "description": "Systems of Equations sample #16"
+  },
+  {
+    "id": "prompt_157",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x + y = 10 \\\\ x - y = 4 \\end{cases}",
+    "description": "Systems of Equations sample #17"
+  },
+  {
+    "id": "prompt_158",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 3x + 4y = 24 \\\\ x = 2y \\end{cases}",
+    "description": "Systems of Equations sample #18"
+  },
+  {
+    "id": "prompt_159",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} 2x + 5y = 1 \\\\ 3x - 2y = 11 \\end{cases}",
+    "description": "Systems of Equations sample #19"
+  },
+  {
+    "id": "prompt_160",
+    "category": "SYSTEMS_OF_EQUATIONS",
+    "groundTruthLatex": "\\begin{cases} x + y = 0 \\\\ x - y = 2 \\end{cases}",
+    "description": "Systems of Equations sample #20"
+  },
+  {
+    "id": "prompt_161",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}",
+    "description": "Matrices sample #1"
+  },
+  {
+    "id": "prompt_162",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}",
+    "description": "Matrices sample #2"
+  },
+  {
+    "id": "prompt_163",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}",
+    "description": "Matrices sample #3"
+  },
+  {
+    "id": "prompt_164",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\det(A) = ad - bc",
+    "description": "Matrices sample #4"
+  },
+  {
+    "id": "prompt_165",
+    "category": "MATRICES",
+    "groundTruthLatex": "A \\mathbf{x} = \\mathbf{b}",
+    "description": "Matrices sample #5"
+  },
+  {
+    "id": "prompt_166",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}",
+    "description": "Matrices sample #6"
+  },
+  {
+    "id": "prompt_167",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{bmatrix} 2 & -1 \\\\ 0 & 3 \\end{bmatrix}",
+    "description": "Matrices sample #7"
+  },
+  {
+    "id": "prompt_168",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} 1 \\\\ 2 \\\\ 3 \\end{pmatrix}",
+    "description": "Matrices sample #8"
+  },
+  {
+    "id": "prompt_169",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{bmatrix} \\lambda_1 & 0 \\\\ 0 & \\lambda_2 \\end{bmatrix}",
+    "description": "Matrices sample #9"
+  },
+  {
+    "id": "prompt_170",
+    "category": "MATRICES",
+    "groundTruthLatex": "A^T A = I",
+    "description": "Matrices sample #10"
+  },
+  {
+    "id": "prompt_171",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix}",
+    "description": "Matrices sample #11"
+  },
+  {
+    "id": "prompt_172",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\text{Tr}(A) = \\sum a_{ii}",
+    "description": "Matrices sample #12"
+  },
+  {
+    "id": "prompt_173",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{bmatrix} 0 & 1 \\\\ -1 & 0 \\end{bmatrix}",
+    "description": "Matrices sample #13"
+  },
+  {
+    "id": "prompt_174",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} a_{11} & a_{12} \\\\ a_{21} & a_{22} \\end{pmatrix}",
+    "description": "Matrices sample #14"
+  },
+  {
+    "id": "prompt_175",
+    "category": "MATRICES",
+    "groundTruthLatex": "A^{-1} = \\frac{1}{\\det(A)} \\text{adj}(A)",
+    "description": "Matrices sample #15"
+  },
+  {
+    "id": "prompt_176",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{bmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}",
+    "description": "Matrices sample #16"
+  },
+  {
+    "id": "prompt_177",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}",
+    "description": "Matrices sample #17"
+  },
+  {
+    "id": "prompt_178",
+    "category": "MATRICES",
+    "groundTruthLatex": "J = \\begin{bmatrix} \\frac{\\partial f_1}{\\partial x} & \\frac{\\partial f_1}{\\partial y} \\\\ \\frac{\\partial f_2}{\\partial x} & \\frac{\\partial f_2}{\\partial y} \\end{bmatrix}",
+    "description": "Matrices sample #18"
+  },
+  {
+    "id": "prompt_179",
+    "category": "MATRICES",
+    "groundTruthLatex": "\\begin{pmatrix} 3 & 0 \\\\ 0 & -2 \\end{pmatrix}",
+    "description": "Matrices sample #19"
+  },
+  {
+    "id": "prompt_180",
+    "category": "MATRICES",
+    "groundTruthLatex": "v^T w = \\sum v_i w_i",
+    "description": "Matrices sample #20"
+  },
+  {
+    "id": "prompt_181",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "y = 3x^2 - 4x + 7",
+    "description": "Messy / Rapid Writing sample #1"
+  },
+  {
+    "id": "prompt_182",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "f(x) = \\frac{2x+1}{x-3}",
+    "description": "Messy / Rapid Writing sample #2"
+  },
+  {
+    "id": "prompt_183",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "\\int 2x \\cos(x^2) dx",
+    "description": "Messy / Rapid Writing sample #3"
+  },
+  {
+    "id": "prompt_184",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "E = mc^2",
+    "description": "Messy / Rapid Writing sample #4"
+  },
+  {
+    "id": "prompt_185",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "PV = nRT",
+    "description": "Messy / Rapid Writing sample #5"
+  },
+  {
+    "id": "prompt_186",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "x = \\frac{-b \\pm \\sqrt{D}}{2a}",
+    "description": "Messy / Rapid Writing sample #6"
+  },
+  {
+    "id": "prompt_187",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "a(b+c) = ab+ac",
+    "description": "Messy / Rapid Writing sample #7"
+  },
+  {
+    "id": "prompt_188",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "\\sin^2(\\theta) + \\cos^2(\\theta) = 1",
+    "description": "Messy / Rapid Writing sample #8"
+  },
+  {
+    "id": "prompt_189",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "e^{i\\pi} = -1",
+    "description": "Messy / Rapid Writing sample #9"
+  },
+  {
+    "id": "prompt_190",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "F = G \\frac{m_1 m_2}{r^2}",
+    "description": "Messy / Rapid Writing sample #10"
+  },
+  {
+    "id": "prompt_191",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "\\frac{dy}{dx} + P(x)y = Q(x)",
+    "description": "Messy / Rapid Writing sample #11"
+  },
+  {
+    "id": "prompt_192",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "V = \\frac{4}{3}\\pi R^3",
+    "description": "Messy / Rapid Writing sample #12"
+  },
+  {
+    "id": "prompt_193",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "A = \\pi r^2",
+    "description": "Messy / Rapid Writing sample #13"
+  },
+  {
+    "id": "prompt_194",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "x^3 - 6x^2 + 11x - 6 = 0",
+    "description": "Messy / Rapid Writing sample #14"
+  },
+  {
+    "id": "prompt_195",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "\\log_b(xy) = \\log_b(x) + \\log_b(y)",
+    "description": "Messy / Rapid Writing sample #15"
+  },
+  {
+    "id": "prompt_196",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "c^2 = a^2 + b^2 - 2ab\\cos(C)",
+    "description": "Messy / Rapid Writing sample #16"
+  },
+  {
+    "id": "prompt_197",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "W = \\int F \\cdot dr",
+    "description": "Messy / Rapid Writing sample #17"
+  },
+  {
+    "id": "prompt_198",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "z = x + iy",
+    "description": "Messy / Rapid Writing sample #18"
+  },
+  {
+    "id": "prompt_199",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "e^x \\approx 1 + x + \\frac{x^2}{2}",
+    "description": "Messy / Rapid Writing sample #19"
+  },
+  {
+    "id": "prompt_200",
+    "category": "MESSY_WRITING",
+    "groundTruthLatex": "\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1",
+    "description": "Messy / Rapid Writing sample #20"
+  }
+]

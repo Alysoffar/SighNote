@@ -16,6 +16,8 @@ ink = "1.1.0-alpha12"
 motionprediction = "1.0.1"
 room = "2.6.1"
 ksp = "2.0.21-1.0.28"
+mlkitDigitalInk = "19.0.0"
+playServicesTasks = "18.2.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +58,10 @@ androidx-input-motionprediction = { group = "androidx.input", name = "input-moti
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# ML Kit Digital Ink Recognition
+mlkit-digital-ink = { group = "com.google.mlkit", name = "digital-ink-recognition", version.ref = "mlkitDigitalInk" }
+play-services-tasks = { group = "com.google.android.gms", name = "play-services-tasks", version.ref = "playServicesTasks" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -103,6 +103,7 @@ class InkCanvasView @JvmOverloads constructor(
         }
 
     var onStrokeFinished: ((InkStroke) -> Unit)? = null
+    var onModelStrokeFinished: ((ModelStroke) -> Unit)? = null
     var onEraseAt: ((Float, Float) -> Unit)? = null
     var onPanAndZoom: ((Float, Float, Float) -> Unit)? = null
 
@@ -142,6 +143,10 @@ class InkCanvasView @JvmOverloads constructor(
             override fun onStrokesFinished(strokes: Map<InProgressStrokeId, InkStroke>) {
                 for ((_, stroke) in strokes) {
                     onStrokeFinished?.invoke(stroke)
+                    onModelStrokeFinished?.let { callback ->
+                        val modelStroke = InkStrokeMapper.toModelStroke(stroke, transform)
+                        callback(modelStroke)
+                    }
                 }
                 // Crucial: remove from InProgressStrokesView so they hand off to CanvasStrokeRenderer
                 inProgressStrokesView.removeFinishedStrokes(strokes.keys)

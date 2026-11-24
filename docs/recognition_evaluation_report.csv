@@ -1,0 +1,9 @@
+recognizer_id,recognizer_name,category,total_samples,exact_matches,exact_match_pct,symbol_accuracy_pct,p50_latency_ms
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",ALL,100,2,2.0,33.575035,14
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",SYSTEMS_OF_EQUATIONS,7,0,0.0,62.65151,12
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",EXPONENTS,38,0,0.0,32.7032,15
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",MESSY_WRITING,10,2,20.0,49.871525,13
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",SUBSCRIPTS,25,0,0.0,30.302748,13
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",FRACTIONS,17,0,0.0,16.359974,18
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",ROOTS,1,0,0.0,31.818182,14
+mlkit-digital-ink,"Google ML Kit Digital Ink (On-Device)",GREEK_LETTERS,2,0,0.0,55.0,13
