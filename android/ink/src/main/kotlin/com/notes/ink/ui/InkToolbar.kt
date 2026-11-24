@@ -44,6 +44,7 @@ fun InkToolbar(
     onClearPage: () -> Unit,
     onToggleDebug: () -> Unit,
     onTriggerStressTest: () -> Unit,
+    onInsertTestPattern: () -> Unit = {},
     modifier: Modifier = Modifier
 ) {
     var showClearDialog by remember { mutableStateOf(false) }
@@ -87,12 +88,17 @@ fun InkToolbar(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Tools: Pen & Eraser
+            // Tools: Pen, Highlighter & Eraser
             Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
                 ToolButton(
                     label = "Pen",
                     selected = uiState.tool == CanvasTool.PEN,
                     onClick = { onSelectTool(CanvasTool.PEN) }
+                )
+                ToolButton(
+                    label = "Highlighter",
+                    selected = uiState.tool == CanvasTool.HIGHLIGHTER,
+                    onClick = { onSelectTool(CanvasTool.HIGHLIGHTER) }
                 )
                 ToolButton(
                     label = "Eraser",
@@ -152,6 +158,12 @@ fun InkToolbar(
                     modifier = Modifier.padding(horizontal = 2.dp)
                 ) {
                     Text("Clear", fontSize = 12.sp, color = Color(0xFFC62828))
+                }
+                FilledTonalButton(
+                    onClick = onInsertTestPattern,
+                    modifier = Modifier.padding(horizontal = 2.dp)
+                ) {
+                    Text("Test (100,100)", fontSize = 11.sp, color = Color(0xFFD32F2F))
                 }
                 FilledTonalButton(
                     onClick = onToggleDebug,

@@ -61,8 +61,38 @@ class InkCanvasView @JvmOverloads constructor(
     var transform: ViewportTransform = ViewportTransform()
         set(value) {
             field = value
+            // InProgressStrokesView takes MotionEvents in view-space.
+            // When motionEventToWorldTransform = screenToPageMatrix in startStroke,
+            // InProgressStrokesView automatically computes:
+            //   strokeToViewTransform = (motionEventToStrokeTransform)^-1 * motionEventToViewTransform
+            //                         = pageToScreenMatrix * motionEventToViewTransform.
+            // Therefore, motionEventToViewTransform MUST remain Identity (since MotionEvent coordinates
+            // are already 1:1 with InProgressStrokesView coordinates).
+            inProgressStrokesView.motionEventToViewTransform = android.graphics.Matrix()
             invalidate()
         }
+    var pdfPath: String? = null
+        set(value) {
+            field = value
+            invalidate()
+        }
+    var pdfPageIndex: Int = 0
+        set(value) {
+            field = value
+            invalidate()
+        }
+
+    // Debug crosshair at the latest raw pen position
+    var showPenCrosshair: Boolean = true
+    private var lastPenRawX: Float = -1f
+    private var lastPenRawY: Float = -1f
+
+    private val crosshairPaint = Paint().apply {
+        color = 0xFFFF0000.toInt() // Red crosshair
+        strokeWidth = 2f
+        style = Paint.Style.STROKE
+        isAntiAlias = true
+    }
 
     var strokes: List<ModelStroke> = emptyList()
         set(value) {
@@ -123,14 +153,18 @@ class InkCanvasView @JvmOverloads constructor(
 
     private fun resolveBrush(brushId: String): Brush {
         val color = when {
-            brushId.contains("blue") -> androidx.compose.ui.graphics.Color(0xFF1976D2)
-            brushId.contains("red") -> androidx.compose.ui.graphics.Color(0xFFD32F2F)
+            brushId.contains("blue") -> androidx.compose.ui.graphics.Color(0xFF1E88E5)
+            brushId.contains("red") -> androidx.compose.ui.graphics.Color(0xFFE53935)
+            brushId.contains("highlighter_yellow") -> androidx.compose.ui.graphics.Color(0x66FFEB3B)
+            brushId.contains("highlighter_blue") -> androidx.compose.ui.graphics.Color(0x6680D8FF)
+            brushId.contains("highlighter_green") -> androidx.compose.ui.graphics.Color(0x66CCFF90)
             else -> androidx.compose.ui.graphics.Color(0xFF111111)
         }
         val size = when {
-            brushId.contains("size_3") -> 3f
-            brushId.contains("size_12") -> 12f
-            else -> 6f
+            brushId.contains("highlighter") -> 24f
+            brushId.contains("size_4") || brushId.contains("size_3") -> 4f
+            brushId.contains("size_16") || brushId.contains("size_12") -> 16f
+            else -> 8f
         }
         return Brush.createWithComposeColor(
             family = StockBrushes.pressurePen(),
@@ -143,32 +177,62 @@ class InkCanvasView @JvmOverloads constructor(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        // 1. Draw Background
+        // 1. Draw Background (White / Paper)
         canvas.drawRect(0f, 0f, width.toFloat(), height.toFloat(), bgPaint)
 
-        // 2. Draw Ruled Lines in Page Space
-        val scale = transform.scale
-        val panY = transform.panY
-        val lineSpacingPage = 40f
-        val startPageY = (-panY / scale).coerceAtLeast(0f)
-        val endPageY = (height - panY) / scale
-        val firstLine = (startPageY / lineSpacingPage).toInt()
-        val lastLine = (endPageY / lineSpacingPage).toInt() + 1
+        // 2. Draw PDF Page or Ruled Lines inside Page-Space Transformation
+        canvas.save()
+        val pageToScreenMatrix = transform.toPageToScreenAndroidMatrix()
+        canvas.concat(pageToScreenMatrix)
 
-        for (i in firstLine..lastLine) {
-            val sy = i * lineSpacingPage * scale + panY
-            canvas.drawLine(0f, sy, width.toFloat(), sy, ruledLinePaint)
+        val currentPdfPath = pdfPath
+        if (currentPdfPath != null) {
+            val pdfBitmap = com.notes.ink.pdf.PdfManager.renderPageBitmap(currentPdfPath, pdfPageIndex, 1200, 1600)
+            if (pdfBitmap != null) {
+                canvas.drawBitmap(pdfBitmap, 0f, 0f, null)
+            }
+        } else {
+            // Draw Ruled Lines in logical page space
+            val lineSpacingPage = 40f
+            val pageWidth = 2400f
+            val totalLines = 200
+            for (i in 1..totalLines) {
+                val py = i * lineSpacingPage
+                canvas.drawLine(0f, py, pageWidth, py, ruledLinePaint)
+            }
         }
 
-        // 3. Draw Dry Strokes in Page-to-Screen Transformed Space
-        val matrix = transform.toPageToScreenAndroidMatrix()
-        for (stroke in strokes) {
+        // 3. Draw Dry Strokes in Page-Space (Canvas is already transformed by pageToScreenMatrix)
+        // Pass identity matrix so CanvasStrokeRenderer utilizes the transformed Canvas coordinate space
+        val identityMatrix = android.graphics.Matrix()
+        val (highlighters, pens) = strokes.partition { it.brush_id.contains("highlighter") }
+
+        for (stroke in highlighters) {
             val inkStroke = inkStrokeCache.getOrPut(stroke.id) {
                 resolveBrush(stroke.brush_id).let { brush ->
                     InkStrokeMapper.toInkStroke(stroke, brush)
                 }
             }
-            canvasStrokeRenderer.draw(canvas, inkStroke, matrix)
+            canvasStrokeRenderer.draw(canvas, inkStroke, identityMatrix)
+        }
+
+        for (stroke in pens) {
+            val inkStroke = inkStrokeCache.getOrPut(stroke.id) {
+                resolveBrush(stroke.brush_id).let { brush ->
+                    InkStrokeMapper.toInkStroke(stroke, brush)
+                }
+            }
+            canvasStrokeRenderer.draw(canvas, inkStroke, identityMatrix)
+        }
+
+        canvas.restore()
+
+        // 4. Debug Crosshair at the latest raw pen position (drawn in screen space)
+        if (showPenCrosshair && lastPenRawX >= 0f && lastPenRawY >= 0f) {
+            val chSize = 20f
+            canvas.drawLine(lastPenRawX - chSize, lastPenRawY, lastPenRawX + chSize, lastPenRawY, crosshairPaint)
+            canvas.drawLine(lastPenRawX, lastPenRawY - chSize, lastPenRawX, lastPenRawY + chSize, crosshairPaint)
+            canvas.drawCircle(lastPenRawX, lastPenRawY, 6f, crosshairPaint)
         }
     }
 
@@ -221,11 +285,22 @@ class InkCanvasView @JvmOverloads constructor(
             }
 
             // Normal Stylus Drawing: Feed directly into InProgressStrokesView
+            lastPenRawX = event.getX(stylusIndex)
+            lastPenRawY = event.getY(stylusIndex)
+            if (showPenCrosshair) {
+                invalidate()
+            }
             when (action) {
                 MotionEvent.ACTION_DOWN,
                 MotionEvent.ACTION_POINTER_DOWN -> {
                     if (activeStylusStrokeId == null) {
-                        activeStylusStrokeId = inProgressStrokesView.startStroke(event, stylusIndex, currentBrush)
+                        val screenToPageMatrix = transform.toScreenToPageAndroidMatrix()
+                        activeStylusStrokeId = inProgressStrokesView.startStroke(
+                            event,
+                            stylusIndex,
+                            currentBrush,
+                            screenToPageMatrix
+                        )
                     }
                 }
                 MotionEvent.ACTION_MOVE -> {
@@ -233,7 +308,13 @@ class InkCanvasView @JvmOverloads constructor(
                     if (strokeId != null) {
                         inProgressStrokesView.addToStroke(event, stylusIndex, strokeId)
                     } else {
-                        activeStylusStrokeId = inProgressStrokesView.startStroke(event, stylusIndex, currentBrush)
+                        val screenToPageMatrix = transform.toScreenToPageAndroidMatrix()
+                        activeStylusStrokeId = inProgressStrokesView.startStroke(
+                            event,
+                            stylusIndex,
+                            currentBrush,
+                            screenToPageMatrix
+                        )
                     }
                 }
                 MotionEvent.ACTION_UP,

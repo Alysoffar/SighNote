@@ -9,6 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.withFrameNanos
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.ink.brush.Brush
 import androidx.ink.brush.StockBrushes
@@ -26,11 +27,25 @@ fun InkCanvasComposable(
     val uiState by viewModel.uiState.collectAsState()
 
     // Active brush: pressure-sensitive pen configured from toolbar state
-    val currentBrush = remember(uiState.color, uiState.thickness) {
+    val currentBrush = remember(uiState.color, uiState.thickness, uiState.tool) {
+        val brushColor = if (uiState.tool == CanvasTool.HIGHLIGHTER) {
+            when (uiState.color) {
+                InkColor.BLACK -> Color(0x66FFEB3B)
+                InkColor.BLUE -> Color(0x6680D8FF)
+                InkColor.RED -> Color(0x66FF8A80)
+                InkColor.YELLOW -> Color(0x66FFEB3B)
+                InkColor.GREEN -> Color(0x66CCFF90)
+            }
+        } else {
+            uiState.color.composeColor
+        }
+
+        val brushSize = if (uiState.tool == CanvasTool.HIGHLIGHTER) 24f else uiState.thickness.sizePx
+
         Brush.createWithComposeColor(
             family = StockBrushes.pressurePen(),
-            color = uiState.color.composeColor,
-            size = uiState.thickness.sizePx,
+            color = brushColor,
+            size = brushSize,
             epsilon = 0.1f
         )
     }
@@ -80,6 +95,8 @@ fun InkCanvasComposable(
                 view.currentTool = uiState.tool
                 view.transform = uiState.transform
                 view.strokes = uiState.strokes
+                view.pdfPath = uiState.pdfPath
+                view.pdfPageIndex = uiState.pdfPageIndex
             }
         )
 

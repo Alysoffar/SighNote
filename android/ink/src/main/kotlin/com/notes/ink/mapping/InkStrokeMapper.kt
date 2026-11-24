@@ -38,8 +38,10 @@ object InkStrokeMapper {
 
         for (i in 0 until inputs.size) {
             val input = inputs.get(i)
-            // Convert physical screen input coordinate into logical page-space coordinate
-            val (px, py) = transform.screenToPage(input.x, input.y)
+            // Stroke was generated with motionEventToWorldTransform converting screenToPage,
+            // so input.x and input.y are ALREADY in page space!
+            val px = input.x
+            val py = input.y
 
             minX = min(minX, px)
             minY = min(minY, py)

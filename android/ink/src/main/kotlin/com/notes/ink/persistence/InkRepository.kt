@@ -10,7 +10,79 @@ class InkRepository(
 ) {
     private val strokeDao = database.strokeDao()
     private val pageDao = database.pageDao()
+    private val notebookDao = database.notebookDao()
 
+    // --- Notebook Operations ---
+    fun getAllNotebooks(): Flow<List<NotebookEntity>> = notebookDao.getAllNotebooks()
+
+    suspend fun getAllNotebooksList(): List<NotebookEntity> = notebookDao.getAllNotebooksList()
+
+    suspend fun getNotebook(notebookId: String): NotebookEntity? = notebookDao.getNotebookById(notebookId)
+
+    suspend fun createNotebook(id: String = java.util.UUID.randomUUID().toString(), title: String = "Untitled Notebook"): NotebookEntity {
+        val nb = NotebookEntity(id = id, title = title)
+        notebookDao.insertOrUpdateNotebook(nb)
+        // Ensure at least one initial page exists
+        val firstPageId = java.util.UUID.randomUUID().toString()
+        val firstPage = PageEntity(
+            id = firstPageId,
+            notebookId = id,
+            pageIndex = 0,
+            revisionCounter = 0L
+        )
+        pageDao.insertOrUpdatePage(firstPage)
+        return nb
+    }
+
+    suspend fun renameNotebook(notebookId: String, newTitle: String) {
+        notebookDao.updateTitle(notebookId, newTitle)
+    }
+
+    suspend fun deleteNotebook(notebookId: String) {
+        val pages = pageDao.getPagesListForNotebook(notebookId)
+        for (page in pages) {
+            strokeDao.deleteAllStrokesForPage(page.id)
+            pageDao.deletePageById(page.id)
+        }
+        notebookDao.deleteNotebookById(notebookId)
+    }
+
+    // --- Page Operations ---
+    fun getPagesForNotebook(notebookId: String): Flow<List<PageEntity>> =
+        pageDao.getPagesForNotebook(notebookId)
+
+    suspend fun getPagesListForNotebook(notebookId: String): List<PageEntity> =
+        pageDao.getPagesListForNotebook(notebookId)
+
+    suspend fun getPage(pageId: String): PageEntity? = pageDao.getPageById(pageId)
+
+    suspend fun addPage(notebookId: String, pdfPath: String? = null, pdfPageIndex: Int = 0): PageEntity {
+        val currentCount = pageDao.getPageCount(notebookId)
+        val newPageId = java.util.UUID.randomUUID().toString()
+        val page = PageEntity(
+            id = newPageId,
+            notebookId = notebookId,
+            pageIndex = currentCount,
+            revisionCounter = 0L,
+            pdfPath = pdfPath,
+            pdfPageIndex = pdfPageIndex
+        )
+        pageDao.insertOrUpdatePage(page)
+        notebookDao.touchNotebook(notebookId)
+        return page
+    }
+
+    suspend fun deletePage(pageId: String, notebookId: String) {
+        strokeDao.deleteAllStrokesForPage(pageId)
+        pageDao.deletePageById(pageId)
+        notebookDao.touchNotebook(notebookId)
+    }
+
+    suspend fun saveViewport(pageId: String, panX: Float, panY: Float, scale: Float) {
+        pageDao.updateViewport(pageId, panX, panY, scale)
+    }
+
+    // --- Stroke Operations ---
     fun getStrokesForPage(pageId: String): Flow<List<Stroke>> {
         return strokeDao.getStrokesForPage(pageId).map { entities ->
             entities.map { it.toDomainStroke() }
@@ -48,9 +120,16 @@ class InkRepository(
         return if (existing != null) {
             existing.toDomainPage()
         } else {
+            // Also ensure parent notebook exists
+            if (notebookDao.getNotebookById(notebookId) == null) {
+                notebookDao.insertOrUpdateNotebook(
+                    NotebookEntity(id = notebookId, title = "Default Notebook")
+                )
+            }
             val newPage = PageEntity(
                 id = pageId,
                 notebookId = notebookId,
+                pageIndex = 0,
                 revisionCounter = 0L
             )
             pageDao.insertOrUpdatePage(newPage)

@@ -61,12 +61,21 @@ data class StrokeEntity(
     }
 }
 
-@Entity(tableName = "pages")
+@Entity(
+    tableName = "pages",
+    indices = [Index(value = ["notebook_id"])]
+)
 data class PageEntity(
     @PrimaryKey
     @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "notebook_id") val notebookId: String,
-    @ColumnInfo(name = "revision_counter") val revisionCounter: Long,
+    @ColumnInfo(name = "page_index") val pageIndex: Int = 0,
+    @ColumnInfo(name = "revision_counter") val revisionCounter: Long = 0L,
+    @ColumnInfo(name = "pan_x") val panX: Float = 0f,
+    @ColumnInfo(name = "pan_y") val panY: Float = 0f,
+    @ColumnInfo(name = "scale") val scale: Float = 1f,
+    @ColumnInfo(name = "pdf_path") val pdfPath: String? = null,
+    @ColumnInfo(name = "pdf_page_index") val pdfPageIndex: Int = 0,
     @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "updated_at") val updatedAt: Long = System.currentTimeMillis()
 ) {
@@ -85,6 +94,7 @@ data class NotebookEntity(
     @PrimaryKey
     @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "thumbnail_path") val thumbnailPath: String? = null,
     @ColumnInfo(name = "created_at") val createdAt: Long = System.currentTimeMillis(),
     @ColumnInfo(name = "updated_at") val updatedAt: Long = System.currentTimeMillis()
 )

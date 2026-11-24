@@ -101,3 +101,59 @@ To adhere to strict architectural boundaries:
 4. **Native Loader & JNI Constraints**:
    - Jetpack Ink relies on native C++ libraries packaged within `ink-nativeloader` (`libink.so`). Hardware acceleration must be enabled in `AndroidManifest.xml` (`android:hardwareAccelerated="true"`).
    - Because `libink.so` is built for Android ELF ABI targets (`arm64-v8a`, `armeabi-v7a`, `x86_64`, `x86`), host JVM unit tests on Windows/macOS/Linux throw `UnsatisfiedLinkError` when instantiating `StockBrushes` or native ink strokes directly without mock/stubbing. Tests asserting native ink C++ lifecycle run via instrumented `androidTest` on an Android device or emulator.
+
+---
+
+## 6. Root Causes Discovered and Fixed
+
+### Bug 1: Ink doesn't move with the canvas
+- **Root Cause**:
+  - Wet ink was initiated via `inProgressStrokesView.startStroke(event, stylusIndex, currentBrush)` with the default identity matrix for `motionEventToWorldTransform`. This caused live strokes to be generated in screen pixel space.
+  - At stroke finish, `inProgressStrokesView.removeFinishedStrokes(strokes.keys)` was previously omitted, which caused completed strokes to freeze on the front-buffered surface at static screen coordinates.
+  - In `InkStrokeMapper.toModelStroke`, screen-to-page transform was being applied a second time, resulting in double transformation.
+- **Fix**:
+  - Passed `transform.toScreenToPageAndroidMatrix()` directly to `inProgressStrokesView.startStroke(event, stylusIndex, currentBrush, screenToPageMatrix)` as `motionEventToWorldTransform`.
+  - As a result, active wet strokes and finalized `androidx.ink.strokes.Stroke` inputs are created directly in world (page-space) coordinates.
+  - Updated `InkStrokeMapper.toModelStroke` to record the stroke points directly in page space without double translation.
+  - In `InkCanvasView.onDraw`, dry strokes are rendered via `canvasStrokeRenderer.draw(canvas, inkStroke, transform.toPageToScreenAndroidMatrix())`. Both wet ink and dry ink now adhere to the identical page-space coordinate system.
+
+### Bug 2: Eraser doesn't work
+- **Root Cause**:
+  - Eraser hit testing in `InkCanvasViewModel.onEraseAt` used a fixed screen-pixel radius (24px) without scaling by the viewport zoom, making hit detection inaccurate under zoom.
+  - Touch events were only being recorded on `ACTION_DOWN`, causing drag-erasing across strokes to miss strokes during `ACTION_MOVE`.
+  - `TOOL_TYPE_ERASER` was not mapped to trigger `onEraseAt`.
+- **Fix**:
+  - Added support for both physical stylus eraser tip (`TOOL_TYPE_ERASER`), S Pen barrel button (`BUTTON_STYLUS_PRIMARY` / `BUTTON_SECONDARY`), and UI toolbar `CanvasTool.ERASER`.
+  - Dispatched `onEraseAt` on `ACTION_DOWN`, `ACTION_MOVE`, and `ACTION_POINTER_DOWN`.
+  - Scaled the eraser hit radius dynamically: `val hitRadius = 50f / transform.scale`, testing bounding-box intersection and point-to-point Euclidean distance.
+  - Logged `InkOperation.EraseStroke` in `UndoRedoManager` and deleted strokes from `Room` database. Undo restores erased strokes to the canvas and database.
+
+### Bug 3: Samsung system pen toolbar opened on launch
+- **Root Cause**:
+  - `MainActivity` contained a text input (`OutlinedTextField`), which triggered One UI's native "S Pen to text" (Direct Writing) overlay toolbar.
+- **Fix**:
+  - Removed the extraneous text field and separated notebook management from canvas drawing.
+
+---
+
+## 7. Features Added
+
+1. **Notebook & Multi-Page Management**:
+   - Home screen (`NotebookListScreen`) showing notebook cards with title, cover icon, and last-edited timestamp.
+   - Create, rename, delete notebooks (with confirmation dialog).
+   - Multi-page support per notebook: `< Page X / Y >`, `+ Page` button, previous/next navigation with per-page stroke persistence and revision counter tracking.
+2. **Reliable Autosave & View State**:
+   - Pan (`panX`, `panY`) and zoom (`scale`) saved into `PageEntity` on each viewport change and on `Lifecycle.Event.ON_PAUSE` / `ON_STOP`.
+   - Restored automatically when switching pages or reopening notebooks.
+3. **PDF Import & Annotation**:
+   - Storage Access Framework file picker (`ActivityResultContracts.OpenDocument`).
+   - Copies imported PDF into app-internal storage (`context.filesDir/notebooks/{notebookId}/imported_{timestamp}.pdf`).
+   - Creates a `PageEntity` per PDF page, references PDF path and page index.
+   - Renders PDF page bitmap background via Android `PdfRenderer` cached via `LruCache`. Ink is drawn directly over the PDF background in page-space.
+4. **PDF Export & Share**:
+   - Renders background (PDF or ruled lines) + ink strokes flattened into an `android.graphics.pdf.PdfDocument`.
+   - Saved to app cache directory and shared via Android system share sheet (`Intent.ACTION_SEND` with `FileProvider`).
+5. **Highlighter Tool & Polish**:
+   - Added `CanvasTool.HIGHLIGHTER` to toolbar.
+   - Semi-transparent brush (alpha 0.4, size 24dp) in yellow, blue, red, green.
+   - Highlighters render beneath pen strokes so underlying text remains crisp.

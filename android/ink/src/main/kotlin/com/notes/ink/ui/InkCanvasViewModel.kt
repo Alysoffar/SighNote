@@ -21,13 +21,16 @@ import kotlin.math.hypot
 
 enum class CanvasTool {
     PEN,
+    HIGHLIGHTER,
     ERASER
 }
 
 enum class InkColor(val composeColor: Color, val hex: String) {
     BLACK(Color.Black, "#000000"),
     BLUE(Color(0xFF1E88E5), "#1E88E5"),
-    RED(Color(0xFFE53935), "#E53935")
+    RED(Color(0xFFE53935), "#E53935"),
+    YELLOW(Color(0xFFFFEB3B), "#FFEB3B"),
+    GREEN(Color(0xFF66BB6A), "#66BB6A")
 }
 
 enum class InkThickness(val sizePx: Float) {
@@ -37,7 +40,10 @@ enum class InkThickness(val sizePx: Float) {
 }
 
 data class InkCanvasUiState(
+    val notebookId: String = "default-notebook",
     val pageId: String = "default-page",
+    val pageIndex: Int = 0,
+    val totalPages: Int = 1,
     val pageRevision: Long = 0L,
     val tool: CanvasTool = CanvasTool.PEN,
     val color: InkColor = InkColor.BLACK,
@@ -48,7 +54,9 @@ data class InkCanvasUiState(
     val showDebugOverlay: Boolean = true,
     val strokeCount: Int = 0,
     val frameTimeMs: Float = 0f,
-    val transform: ViewportTransform = ViewportTransform()
+    val transform: ViewportTransform = ViewportTransform(),
+    val pdfPath: String? = null,
+    val pdfPageIndex: Int = 0
 )
 
 class InkCanvasViewModel(
@@ -61,16 +69,33 @@ class InkCanvasViewModel(
     private val undoRedoManager = UndoRedoManager()
 
     fun loadPage(pageId: String) {
-        _uiState.update { it.copy(pageId = pageId) }
         viewModelScope.launch(Dispatchers.IO) {
-            repository.ensurePageExists(pageId)
+            val page = repository.getPage(pageId) ?: repository.ensurePageExists(pageId).let {
+                repository.getPage(pageId)
+            }
+            val notebookId = page?.notebookId ?: "default-notebook"
+            val allPages = repository.getPagesListForNotebook(notebookId)
+            val pageIdx = allPages.indexOfFirst { it.id == pageId }.coerceAtLeast(0)
             val rev = repository.getPageRevision(pageId)
             val loadedStrokes = repository.getStrokesList(pageId)
+            val restoredTransform = if (page != null && page.scale > 0f) {
+                ViewportTransform(scale = page.scale, panX = page.panX, panY = page.panY)
+            } else {
+                ViewportTransform()
+            }
+
             _uiState.update {
                 it.copy(
+                    notebookId = notebookId,
+                    pageId = pageId,
+                    pageIndex = pageIdx,
+                    totalPages = allPages.size.coerceAtLeast(1),
                     pageRevision = rev,
                     strokes = loadedStrokes,
                     strokeCount = loadedStrokes.size,
+                    transform = restoredTransform,
+                    pdfPath = page?.pdfPath,
+                    pdfPageIndex = page?.pdfPageIndex ?: 0,
                     canUndo = undoRedoManager.canUndo,
                     canRedo = undoRedoManager.canRedo
                 )
@@ -314,11 +339,90 @@ class InkCanvasViewModel(
         _uiState.update {
             it.copy(transform = ViewportTransform(scale = newScale, panX = newPanX, panY = newPanY))
         }
+        val pageId = _uiState.value.pageId
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveViewport(pageId, newPanX, newPanY, newScale)
+        }
+    }
+
+    fun saveCurrentViewport() {
+        val current = _uiState.value.transform
+        val pageId = _uiState.value.pageId
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveViewport(pageId, current.panX, current.panY, current.scale)
+        }
+    }
+
+    fun nextPage() {
+        val notebookId = _uiState.value.notebookId
+        val currentPageIndex = _uiState.value.pageIndex
+        viewModelScope.launch(Dispatchers.IO) {
+            val pages = repository.getPagesListForNotebook(notebookId)
+            if (currentPageIndex < pages.size - 1) {
+                loadPage(pages[currentPageIndex + 1].id)
+            }
+        }
+    }
+
+    fun prevPage() {
+        val notebookId = _uiState.value.notebookId
+        val currentPageIndex = _uiState.value.pageIndex
+        viewModelScope.launch(Dispatchers.IO) {
+            val pages = repository.getPagesListForNotebook(notebookId)
+            if (currentPageIndex > 0) {
+                loadPage(pages[currentPageIndex - 1].id)
+            }
+        }
+    }
+
+    fun addNewPage() {
+        val notebookId = _uiState.value.notebookId
+        viewModelScope.launch(Dispatchers.IO) {
+            val newPage = repository.addPage(notebookId)
+            loadPage(newPage.id)
+        }
     }
 
     /**
-     * Programmatically inserts count (default 2000) synthetic strokes to test rendering & scrolling.
+     * Inserts a debug-only test stroke with known page-space coordinates (100, 100) -> (500, 500).
+     * Used to verify that finished strokes visually move and scale with the page under pan and zoom.
      */
+    fun insertTestPatternStroke() {
+        val testPoints = (0..50).map { step ->
+            val fraction = step / 50f
+            val x = 100f + fraction * 400f
+            val y = 100f + fraction * 400f
+            com.notes.model.StrokePoint(
+                x = x,
+                y = y,
+                t = step * 10L,
+                pressure = 0.5f,
+                tilt = 0f
+            )
+        }
+        val testStroke = com.notes.model.Stroke(
+            id = "debug-test-pattern-${System.currentTimeMillis()}",
+            brush_id = "color_red_size_8",
+            points = testPoints,
+            bounds = com.notes.model.BoundingBox(100f, 100f, 500f, 500f)
+        )
+
+        undoRedoManager.recordOperation(InkOperation.AddStroke(testStroke))
+        val updated = _uiState.value.strokes + testStroke
+        _uiState.update {
+            it.copy(
+                strokes = updated,
+                strokeCount = updated.size,
+                pageRevision = it.pageRevision + 1L,
+                canUndo = undoRedoManager.canUndo,
+                canRedo = undoRedoManager.canRedo
+            )
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.saveStroke(testStroke, _uiState.value.pageId)
+        }
+    }
     fun triggerStressTest(count: Int = 2000) {
         viewModelScope.launch(Dispatchers.Default) {
             val synthetic = StressStrokeGenerator.generateStrokes(count = count)

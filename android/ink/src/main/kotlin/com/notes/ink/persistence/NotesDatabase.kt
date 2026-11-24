@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [StrokeEntity::class, PageEntity::class, NotebookEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class NotesDatabase : RoomDatabase() {
@@ -26,7 +26,7 @@ abstract class NotesDatabase : RoomDatabase() {
                     context.applicationContext,
                     NotesDatabase::class.java,
                     "notes_database.db"
-                ).build().also { INSTANCE = it }
+                ).fallbackToDestructiveMigration().build().also { INSTANCE = it }
             }
         }
 
