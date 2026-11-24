@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.notes.app.AppUnitTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-20T13:09:23.469Z" hostname="LAPTOP-R3589QLJ" time="0.003">
-  <properties/>
-  <testcase name="testAppModuleSetup" classname="com.notes.app.AppUnitTest" time="0.003"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

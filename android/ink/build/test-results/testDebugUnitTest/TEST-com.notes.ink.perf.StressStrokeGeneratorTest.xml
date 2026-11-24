@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.notes.ink.perf.StressStrokeGeneratorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-24T18:18:58.723Z" hostname="LAPTOP-R3589QLJ" time="0.078">
-  <properties/>
-  <testcase name="testGenerateTwoThousandStrokes" classname="com.notes.ink.perf.StressStrokeGeneratorTest" time="0.078"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
