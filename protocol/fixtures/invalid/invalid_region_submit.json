@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "type": "region.submit",
+  "id": "11111111-1111-1111-1111-111111111111",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "lines": []
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "type": "pong",
+  "id": "3456789a-3456-3456-3456-3456789abcde",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "timestamp": 1700000000045
+  }
+}

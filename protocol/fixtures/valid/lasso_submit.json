@@ -1,0 +1,24 @@
+{
+  "v": 1,
+  "type": "lasso.submit",
+  "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "line_ids": [
+      "22222222-2222-2222-2222-222222222222"
+    ],
+    "bounding_box": {
+      "min_x": 80.0,
+      "min_y": 130.0,
+      "max_x": 370.0,
+      "max_y": 220.0
+    },
+    "polygon_points": [
+      { "x": 80.0, "y": 130.0 },
+      { "x": 370.0, "y": 130.0 },
+      { "x": 370.0, "y": 220.0 },
+      { "x": 80.0, "y": 220.0 }
+    ]
+  }
+}

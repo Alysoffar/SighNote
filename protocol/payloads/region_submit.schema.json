@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/region_submit.schema.json",
+  "title": "RegionSubmitPayload",
+  "description": "Payload sent by client when submitting a canvas region for AI tutor analysis.",
+  "type": "object",
+  "required": ["lines", "bounding_box"],
+  "properties": {
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "stroke_ids", "bounding_box"],
+        "properties": {
+          "id": { "type": "string", "format": "uuid" },
+          "stroke_ids": {
+            "type": "array",
+            "items": { "type": "string", "format": "uuid" }
+          },
+          "bounding_box": {
+            "type": "object",
+            "required": ["min_x", "min_y", "max_x", "max_y"],
+            "properties": {
+              "min_x": { "type": "number" },
+              "min_y": { "type": "number" },
+              "max_x": { "type": "number" },
+              "max_y": { "type": "number" }
+            },
+            "additionalProperties": false
+          },
+          "recognition": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": ["latex", "confidence"],
+                "properties": {
+                  "latex": { "type": "string" },
+                  "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+                  "symbols": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["symbol", "confidence"],
+                      "properties": {
+                        "symbol": { "type": "string" },
+                        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              { "type": "null" }
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "bounding_box": {
+      "type": "object",
+      "required": ["min_x", "min_y", "max_x", "max_y"],
+      "properties": {
+        "min_x": { "type": "number" },
+        "min_y": { "type": "number" },
+        "max_x": { "type": "number" },
+        "max_y": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "trigger": {
+      "type": "string",
+      "enum": ["manual", "auto", "selection"]
+    }
+  },
+  "additionalProperties": false
+}

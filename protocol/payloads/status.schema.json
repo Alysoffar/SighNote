@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/status.schema.json",
+  "title": "StatusPayload",
+  "description": "Payload sent by server to inform client of processing stage or status.",
+  "type": "object",
+  "required": ["code", "message"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": ["idle", "processing", "analyzing", "done"],
+      "description": "Status code string"
+    },
+    "message": {
+      "type": "string",
+      "description": "Descriptive message"
+    }
+  },
+  "additionalProperties": false
+}

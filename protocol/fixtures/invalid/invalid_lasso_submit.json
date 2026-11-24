@@ -1,0 +1,15 @@
+{
+  "v": 1,
+  "type": "lasso.submit",
+  "id": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "bounding_box": {
+      "min_x": 80.0,
+      "min_y": 130.0,
+      "max_x": 370.0,
+      "max_y": 220.0
+    }
+  }
+}

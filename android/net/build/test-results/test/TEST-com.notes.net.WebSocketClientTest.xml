@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.notes.net.WebSocketClientTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-19T15:05:34.906Z" hostname="LAPTOP-R3589QLJ" time="5.381">
+  <properties/>
+  <testcase name="testReceiveUnderlineAction" classname="com.notes.net.WebSocketClientTest" time="5.381"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

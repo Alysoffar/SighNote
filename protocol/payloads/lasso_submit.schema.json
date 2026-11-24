@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/lasso_submit.schema.json",
+  "title": "LassoSubmitPayload",
+  "description": "Payload sent by client when user circles content with a lasso selection.",
+  "type": "object",
+  "required": ["line_ids", "bounding_box"],
+  "properties": {
+    "line_ids": {
+      "type": "array",
+      "items": { "type": "string", "format": "uuid" }
+    },
+    "bounding_box": {
+      "type": "object",
+      "required": ["min_x", "min_y", "max_x", "max_y"],
+      "properties": {
+        "min_x": { "type": "number" },
+        "min_y": { "type": "number" },
+        "max_x": { "type": "number" },
+        "max_y": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "polygon_points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["x", "y"],
+        "properties": {
+          "x": { "type": "number" },
+          "y": { "type": "number" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

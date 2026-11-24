@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "type": "error",
+  "id": "23456789-2345-2345-2345-23456789abcd",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "message": "Error without code"
+  }
+}

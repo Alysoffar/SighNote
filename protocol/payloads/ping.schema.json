@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/ping.schema.json",
+  "title": "PingPayload",
+  "description": "Payload sent by client to check connection health.",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optional client timestamp in milliseconds"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/pong.schema.json",
+  "title": "PongPayload",
+  "description": "Payload sent by server in response to a ping.",
+  "type": "object",
+  "properties": {
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Server timestamp or echoed client timestamp in milliseconds"
+    }
+  },
+  "additionalProperties": false
+}

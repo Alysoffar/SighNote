@@ -1,0 +1,11 @@
+{
+  "v": 1,
+  "type": "status",
+  "id": "dddddddd-dddd-dddd-dddd-dddddddddddd",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "code": "analyzing",
+    "message": "AI tutor is checking the algebraic steps..."
+  }
+}

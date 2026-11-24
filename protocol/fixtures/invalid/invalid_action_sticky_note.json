@@ -1,0 +1,18 @@
+{
+  "v": 1,
+  "type": "action.sticky_note",
+  "id": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "action_id": "55555555-5555-5555-5555-555555555555",
+    "page_rev": 3,
+    "line_id": "22222222-2222-2222-2222-222222222222",
+    "fallback_bbox": {
+      "min_x": 370.0,
+      "min_y": 140.0,
+      "max_x": 520.0,
+      "max_y": 240.0
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WebSocketMessage",
+  "description": "Validates a complete WebSocket message: envelope and matching payload.",
+  "allOf": [
+    { "$ref": "envelope.schema.json" },
+    {
+      "if": { "properties": { "type": { "const": "region.submit" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/region_submit.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "lasso.submit" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/lasso_submit.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "cancel" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/cancel.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "ping" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/ping.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "status" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/status.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "action.underline" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/action_underline.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "action.sticky_note" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/action_sticky_note.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "action.dismiss" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/action_dismiss.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "error" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/error.schema.json" } } }
+    },
+    {
+      "if": { "properties": { "type": { "const": "pong" } } },
+      "then": { "properties": { "payload": { "$ref": "payloads/pong.schema.json" } } }
+    }
+  ]
+}

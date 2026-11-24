@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "WebSocketMessageEnvelope",
+  "description": "Envelope wrapper for all WebSocket messages in version 1.",
+  "type": "object",
+  "required": ["v", "type", "id", "session_id", "page_rev", "payload"],
+  "properties": {
+    "v": {
+      "type": "integer",
+      "const": 1,
+      "description": "Protocol version, must be 1"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "region.submit",
+        "lasso.submit",
+        "cancel",
+        "ping",
+        "status",
+        "action.underline",
+        "action.sticky_note",
+        "action.dismiss",
+        "error",
+        "pong"
+      ],
+      "description": "Message type"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+      "description": "Unique UUID for this message"
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Client-server session identifier"
+    },
+    "page_rev": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Page revision counter at message creation"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Type-specific payload"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "v": 1,
+  "type": "ping",
+  "id": "not-a-valid-uuid-string",
+  "session_id": "session-42",
+  "page_rev": 1,
+  "payload": {}
+}

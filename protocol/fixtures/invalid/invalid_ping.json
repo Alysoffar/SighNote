@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "type": "ping",
+  "id": "cccccccc-cccc-cccc-cccc-cccccccccccc",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "timestamp": -100
+  }
+}

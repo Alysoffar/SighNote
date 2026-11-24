@@ -1,0 +1,14 @@
+{
+  "v": 1,
+  "type": "action.underline",
+  "id": "eeeeeeee-eeee-eeee-eeee-eeeeeeeeeeee",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "action_id": "44444444-4444-4444-4444-444444444444",
+    "page_rev": 3,
+    "line_id": "22222222-2222-2222-2222-222222222222",
+    "color": "#E53935",
+    "style": "wavy"
+  }
+}

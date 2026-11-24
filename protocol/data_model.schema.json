@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DataModel",
+  "description": "Domain data model for math notebook: strokes, lines, problems, pages, notebooks in page-space coordinates.",
+  "definitions": {
+    "BoundingBox": {
+      "type": "object",
+      "required": ["min_x", "min_y", "max_x", "max_y"],
+      "properties": {
+        "min_x": { "type": "number" },
+        "min_y": { "type": "number" },
+        "max_x": { "type": "number" },
+        "max_y": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "StrokePoint": {
+      "type": "object",
+      "required": ["x", "y", "t", "pressure", "tilt"],
+      "properties": {
+        "x": { "type": "number", "description": "Page-space X coordinate" },
+        "y": { "type": "number", "description": "Page-space Y coordinate" },
+        "t": { "type": "integer", "minimum": 0, "description": "Timestamp in milliseconds" },
+        "pressure": { "type": "number", "minimum": 0.0, "maximum": 1.0, "description": "Normalized pressure" },
+        "tilt": { "type": "number", "description": "Tilt in degrees" }
+      },
+      "additionalProperties": false
+    },
+    "Stroke": {
+      "type": "object",
+      "required": ["id", "brush_id", "points", "bounds"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "brush_id": { "type": "string", "minLength": 1 },
+        "points": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/StrokePoint" }
+        },
+        "bounds": { "$ref": "#/definitions/BoundingBox" }
+      },
+      "additionalProperties": false
+    },
+    "SymbolConfidence": {
+      "type": "object",
+      "required": ["symbol", "confidence"],
+      "properties": {
+        "symbol": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 }
+      },
+      "additionalProperties": false
+    },
+    "RecognitionResult": {
+      "type": "object",
+      "required": ["latex", "confidence"],
+      "properties": {
+        "latex": { "type": "string" },
+        "confidence": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+        "symbols": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/SymbolConfidence" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Line": {
+      "type": "object",
+      "required": ["id", "stroke_ids", "bounding_box"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "stroke_ids": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" }
+        },
+        "bounding_box": { "$ref": "#/definitions/BoundingBox" },
+        "recognition": {
+          "oneOf": [
+            { "$ref": "#/definitions/RecognitionResult" },
+            { "type": "null" }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Problem": {
+      "type": "object",
+      "required": ["id", "line_ids"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "line_ids": {
+          "type": "array",
+          "items": { "type": "string", "format": "uuid" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Page": {
+      "type": "object",
+      "required": ["id", "notebook_id", "revision_counter", "strokes", "lines", "problems"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "notebook_id": { "type": "string", "format": "uuid" },
+        "revision_counter": { "type": "integer", "minimum": 0 },
+        "strokes": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Stroke" }
+        },
+        "lines": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Line" }
+        },
+        "problems": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Problem" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "Notebook": {
+      "type": "object",
+      "required": ["id", "title", "pages"],
+      "properties": {
+        "id": { "type": "string", "format": "uuid" },
+        "title": { "type": "string" },
+        "pages": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Page" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

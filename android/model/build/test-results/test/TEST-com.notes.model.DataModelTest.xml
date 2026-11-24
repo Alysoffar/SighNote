@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.notes.model.DataModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-19T14:56:00.174Z" hostname="LAPTOP-R3589QLJ" time="0.058">
+  <properties/>
+  <testcase name="testStrokeSerializationRoundTrip" classname="com.notes.model.DataModelTest" time="0.055"/>
+  <testcase name="testPageRevisionCounterIncrement" classname="com.notes.model.DataModelTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,12 @@
+{
+  "v": 1,
+  "type": "error",
+  "id": "23456789-2345-2345-2345-23456789abcd",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "code": "INVALID_PAYLOAD",
+    "message": "Field 'lines' is required in region.submit payload",
+    "details": "Schema validation failed at path /payload/lines"
+  }
+}

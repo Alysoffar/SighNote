@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/action_dismiss.schema.json",
+  "title": "ActionDismissPayload",
+  "description": "Payload sent by server to dismiss/remove an action previously placed on the canvas.",
+  "type": "object",
+  "required": ["action_id"],
+  "properties": {
+    "action_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "UUID of the action to dismiss"
+    }
+  },
+  "additionalProperties": false
+}

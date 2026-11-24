@@ -1,0 +1,10 @@
+{
+  "v": 1,
+  "type": "cancel",
+  "id": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+  "session_id": "session-42",
+  "page_rev": 3,
+  "payload": {
+    "reason": "Cancelled without target"
+  }
+}

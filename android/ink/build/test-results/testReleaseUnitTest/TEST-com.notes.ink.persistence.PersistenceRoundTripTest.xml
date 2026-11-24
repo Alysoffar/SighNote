@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.notes.ink.persistence.PersistenceRoundTripTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-20T13:09:21.964Z" hostname="LAPTOP-R3589QLJ" time="0.006">
+  <properties/>
+  <testcase name="testStrokeEntityMappingRoundTrip" classname="com.notes.ink.persistence.PersistenceRoundTripTest" time="0.001"/>
+  <testcase name="testStrokePointsBinarySerialization" classname="com.notes.ink.persistence.PersistenceRoundTripTest" time="0.004"/>
+  <testcase name="testEmptyPointsSerialization" classname="com.notes.ink.persistence.PersistenceRoundTripTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

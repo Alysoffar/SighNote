@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://notes.app/schemas/payloads/action_sticky_note.schema.json",
+  "title": "ActionStickyNotePayload",
+  "description": "Payload sent by server to place an AI tutor sticky note on the canvas.",
+  "type": "object",
+  "required": ["action_id", "page_rev", "line_id", "fallback_bbox", "content"],
+  "properties": {
+    "action_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this action"
+    },
+    "page_rev": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Page revision against which the action was computed"
+    },
+    "line_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Line ID to which this sticky note is anchored"
+    },
+    "fallback_bbox": {
+      "type": "object",
+      "required": ["min_x", "min_y", "max_x", "max_y"],
+      "properties": {
+        "min_x": { "type": "number" },
+        "min_y": { "type": "number" },
+        "max_x": { "type": "number" },
+        "max_y": { "type": "number" }
+      },
+      "additionalProperties": false,
+      "description": "Fallback bounding box in page-space"
+    },
+    "content": {
+      "type": "string",
+      "description": "Text or markdown content for the sticky note"
+    },
+    "color": {
+      "type": "string",
+      "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{8})$",
+      "description": "Optional hex color for sticky note background"
+    }
+  },
+  "additionalProperties": false
+}
