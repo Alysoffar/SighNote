@@ -90,14 +90,32 @@ fun NotesAppRoot() {
     val repository = remember { InkRepository(database) }
 
     var currentNotebookId by remember { mutableStateOf<String?>(null) }
+    var inDataCollectionMode by remember { mutableStateOf(false) }
 
-    if (currentNotebookId == null) {
-        NotebookListScreen(
-            repository = repository,
-            onOpenNotebook = { notebookId ->
-                currentNotebookId = notebookId
-            }
+    if (inDataCollectionMode) {
+        com.notes.app.ui.DataCollectionScreen(
+            onNavigateBack = { inDataCollectionMode = false }
         )
+    } else if (currentNotebookId == null) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            NotebookListScreen(
+                repository = repository,
+                onOpenNotebook = { notebookId ->
+                    currentNotebookId = notebookId
+                }
+            )
+
+            // Button to jump into handwriting data collection spike (Debug only)
+            Button(
+                onClick = { inDataCollectionMode = true },
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .padding(24.dp),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF673AB7))
+            ) {
+                Text("Recognition Spike (Phase 2)")
+            }
+        }
     } else {
         NotebookCanvasScreen(
             notebookId = currentNotebookId!!,
